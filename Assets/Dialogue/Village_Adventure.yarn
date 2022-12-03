@@ -1,0 +1,63 @@
+﻿title: Start
+tags:
+---
+Player: Another day in Space Fleet. Might go have a chat... #line:08b260d 
+//pick a random person to speak to
+-> Go see the Engineer as per orders #line:0fcaf5d 
+    <<jump TalkToEngineer>>
+-> Meet up with your friend #line:072c935 
+    <<jump TalkToCrewmate>>
+-> Go and talk to the Captain #line:084570b 
+    <<jump TalkToCaptain>>
+===
+
+title: TalkToEngineer
+tags:
+---
+Engineer: Hello! I am the Engineer. #line:064dd09 
+<<jump BridgeEnding>>
+===
+
+title: TalkToCrewmate
+tags:
+---
+Crewmate: Hello! I am your Crewmate. #line:0870ea4 
+<<jump BridgeEnding>>
+===
+
+title: TalkToCaptain
+tags:
+---
+<<declare $away_mission_readiness=0>>
+
+
+Captain: Hello! I am the Captain. #line:0861e59 
+Player: I want to go on more missions. #line:008670d 
+Captain: Do you think you are ready? #line:05198bc 
+-> Yes #line:014e949 
+    <<set $away_mission_readiness+=1>>
+    //if so, ask again
+    Captain: Really? #line:026c113 
+    -> ...yes? #line:087956f 
+        <<set $away_mission_readiness+=1>>
+    <dedent from 8>-> Actually, no. #line:00617df 
+-> No #line:0c3962d 
+//now go to the ending
+<<jump BridgeEnding>>
+===
+
+title: BridgeEnding
+tags:
+---
+//everyone reports to the bridge
+Captain: Pirates! #line:0a59293 
+Player: Oh no! #line:0486e25 
+//now change who goes depending on player actions
+<<if $away_mission_readiness<2>>
+    Captain: Crewmate, go deal with those pirates! #line:0c2860e 
+    Crewmate: Yes, Captain! #line:0ed6828 
+<<else>>
+    Captain: Player, you were just telling me how ready for this you are. Go deal with those pirates! #line:07c3c84 
+    Player: Hooray! #line:08fb9fb 
+<<endif>>
+===
