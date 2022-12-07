@@ -328,12 +328,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3137c0b2079d24543921a3726e4ea6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: NPC2baker
-  talkToNode: TalkToEngineer
+  characterName: NPC2
+  talkToNode: NPC2Baker
   scriptToLoad: {fileID: 7545569452688597077, guid: f0ac4ae5bcb458c40a4078bd80267b9a, type: 3}
   dialogueRunner: {fileID: 3579681406542067097}
   dialogueCanvas: {fileID: 7895946090049252622}
   PostionSpeachBubble: {x: 0, y: 6, z: 0}
+  triggerTimer: 0
 --- !u!136 &429304793
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -699,12 +700,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3137c0b2079d24543921a3726e4ea6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: NPC3escort
-  talkToNode: TalkToCrewmate
+  characterName: NPC3
+  talkToNode: NPC3Escort
   scriptToLoad: {fileID: 7545569452688597077, guid: f0ac4ae5bcb458c40a4078bd80267b9a, type: 3}
   dialogueRunner: {fileID: 3579681406542067097}
   dialogueCanvas: {fileID: 7895946090049252622}
   PostionSpeachBubble: {x: 0, y: 6, z: 0}
+  triggerTimer: 0
 --- !u!136 &729893594
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1136,7 +1138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121779921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2, y: 3.921, z: -18}
+  m_LocalPosition: {x: -3.2, y: 3.921, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1155,12 +1157,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3137c0b2079d24543921a3726e4ea6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: NPC1information
-  talkToNode: Start
+  characterName: NPC1
+  talkToNode: NPC1Information
   scriptToLoad: {fileID: 7545569452688597077, guid: f0ac4ae5bcb458c40a4078bd80267b9a, type: 3}
   dialogueRunner: {fileID: 3579681406542067097}
   dialogueCanvas: {fileID: 7895946090049252622}
   PostionSpeachBubble: {x: 0, y: 6, z: 0}
+  triggerTimer: 0
 --- !u!224 &1139728309 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4935123090281167011, guid: 67dde1b92175d4745aaea386e7555d40, type: 3}
@@ -1737,7 +1740,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252309717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 5.21, z: 0.69}
+  m_LocalPosition: {x: 9, y: 5.21, z: -5.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2679,12 +2682,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3137c0b2079d24543921a3726e4ea6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: NPC4delivery
-  talkToNode: TalkToCaptain
+  characterName: NPC4
+  talkToNode: NPC4Delivery
   scriptToLoad: {fileID: 7545569452688597077, guid: f0ac4ae5bcb458c40a4078bd80267b9a, type: 3}
   dialogueRunner: {fileID: 3579681406542067097}
   dialogueCanvas: {fileID: 7895946090049252622}
   PostionSpeachBubble: {x: 0, y: 6, z: 0}
+  triggerTimer: 0
 --- !u!136 &1991304769
 CapsuleCollider:
   m_ObjectHideFlags: 0

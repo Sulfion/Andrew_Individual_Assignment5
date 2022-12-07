@@ -40,7 +40,7 @@ Captain: Do you think you are ready? #line:05198bc
     Captain: Really? #line:026c113 
     -> ...yes? #line:087956f 
         <<set $away_mission_readiness+=1>>
-    <dedent from 8>-> Actually, no. #line:00617df 
+    -> Actually, no. #line:00617df 
 -> No #line:0c3962d 
 //now go to the ending
 <<jump BridgeEnding>>
@@ -63,10 +63,105 @@ Player: Oh no! #line:0486e25
 ===
 
 
-title: NPC1information
+
+
+
+
+title: RealStart
 tags:
 ---
-NPC1: 
+Player: At last...
+Player: I've finally arrived at the next town.
+Player: It sure seems busy, but it looks like the road to the next town is closed.
+Player: Maybe I should talk to someone in the town square and find out what's going on?
+===
 
+title: NPC1Information
+tags:
+---
+<<declare $visited_town_crier = 0>>
+<<declare $rejected_town_crier = 0>>
+
+<<if $rejected_town_crier < 1>>
+Town Crier: Welcome to Seaswan! Is there something I can help you with?
+    -> Yes, how can I move to the next town?
+        Town Crier: The three head villagers are looking for someone to help them out.
+        Town Crier: They won't let anyone leave until their requests are met!
+        Town Crier: Maybe you can help them?
+            -> Yes
+                <<set $visited_town_crier = 1>>
+                Town Crier: Great! Hop to it.
+            -> No
+                <<set $rejected_town_crier = 1>>
+                Town Crier: Well, you're stuck here with the rest of us until someone actually useful comes along...
+    -> No, I'm good.
+<<else>>
+Town Crier: Welcome back...
+Town Crier: Are you finally ready to help out yet?
+    -> Fine, but it's not as if I want to.
+        <<set $visited_town_crier = 1>>
+        Town Crier: Get to work then.
+    -> As if.
+        Town Crier: Then continue to enjoy waiting along with the rest of us.
+<<endif>>
+===
+
+title: NPC2Baker
+tags:
+---
+<<declare $rejected_baker = 0>>
+
+<<if $visited_town_crier<1>>
+    <<jump NotVisitedCrierYet>>
+<<endif>>
+
+<<if $rejected_baker < 1>>
+Baker: At last! A new face in town.
+Baker: You've come just in time, I need some butter for the hot bread that has just come out of the oven.
+Baker: Would you kindly go and fetch it?
+Baker: If you don't make it back in five minutes, my bread will be cold and I will be very sad.
+Baker: How about it?
+    -> Yes, I'll run and fetch it.
+        Thank you so much! The five minutes starts now.
+    -> No way, why should I make you your lunch?
+        <<set $rejected_baker = 1>>
+        Baker: Well that's just rude.
+<<endif>>
+
+<<if $rejected_baker > 0>>
+Baker: So you decided to come back?
+Baker: Luckily for you, I just finished making another fresh loaf of bread.
+Baker: Are you ready to get the butter?
+    -> Yes, fine. But only this once!
+        Baker: I had a feeling you would see reason. Your five minutes starts now.
+    -> Not a chance. Make your own sandwich.
+        Baker: Good luck moving on to the next town without my help then.
+<<endif>>
+===
+
+title: NPC3Escort
+tags:
+---
+<<if $visited_town_crier<1>>
+    <<jump NotVisitedCrierYet>>
+<<endif>>
+
+Villager: Hello.
+===
+
+title: NPC4Delivery
+tags:
+---
+<<if $visited_town_crier<1>>
+    <<jump NotVisitedCrierYet>>
+<<endif>>
+
+Merchant: Hello.
+===
+
+title: NotVisitedCrierYet
+tags:
+---
+Player: I should visit the Town Crier before speaking to anyone else.
 ===
 

@@ -48,14 +48,14 @@ public class NPC3D : MonoBehaviour
         }
     }
 
+    //this is a timer to track how long the player is near a specific NPC
     private void Update()
     {
-        if (triggerTimer)
+        if (triggerTimer == true && this.gameObject.CompareTag("NPC1"))
         {
             timer += Time.deltaTime;
             if (timer >= 5)
             {
-                Debug.Log(timer);
                 Debug.Log("Why are you still here?");
             }
         }
@@ -63,12 +63,11 @@ public class NPC3D : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if other is player
         if (other.gameObject.CompareTag("Player"))
         {
             dialogueCanvas.SetActive(true);
 
-            triggerTimer = true;
+            triggerTimer = true; //start the timer
 
             if (!string.IsNullOrEmpty(talkToNode))
             {
@@ -108,23 +107,13 @@ public class NPC3D : MonoBehaviour
         }
     }
 
+    //hide dialogue canvas when player moves away
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             dialogueCanvas.SetActive(false);
-    }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        timer = Time.deltaTime;
-    //        if (timer >= 5)
-    //        {
-    //            Debug.Log(timer);
-    //            Debug.Log("Why are you still here?");
-    //        }
-    //    }
+            triggerTimer = false;
+        }
     }
 }
