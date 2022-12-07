@@ -62,11 +62,11 @@ Player: Oh no! #line:0486e25
 <<endif>>
 ===
 
-//hello
-title: NPC1
+
+title: NPC1information
 tags:
 ---
-
+NPC1: 
 
 ===
 
