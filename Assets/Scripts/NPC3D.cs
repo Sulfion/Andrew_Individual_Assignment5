@@ -94,6 +94,10 @@ public class NPC3D : MonoBehaviour
         if (this.gameObject.CompareTag("NPC2"))
         {
             Debug.Log("Hello I am NPC2.");
+            if (other.gameObject.CompareTag("Bread"))
+            {
+                Debug.Log("Thanks for the bread!");
+            }
         }
         //control conditions for NPC3
         if (this.gameObject.CompareTag("NPC3"))
