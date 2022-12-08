@@ -139,7 +139,7 @@ Baker: Are you ready to get the butter? #line:0f4615d
 <<if $rejected_baker==0>>
 Baker: At last! A new face in town. #line:055b31e 
 Baker: You've come just in time, I need some butter for the hot bread that has just come out of the oven. #line:0909ddb 
-Baker: Would you kindly go and fetch it? #line:00a7e8a 
+Baker: Would you kindly go and fetch it? It's on a purple table. #line:00a7e8a 
 Baker: If you don't make it back in five minutes, my bread will be cold and I will be very sad. #line:0a74f73 
 Baker: How about it? #line:09e4500 
     -> Yes, I'll run and fetch it. #line:0b997ec 
@@ -210,7 +210,7 @@ Merchant: Unless you're happy to just loaf about here longer. #line:0c79a08
 <<if $rejected_delivery==0&&$accepted_delivery==0>>
 Merchant: You're just in time! #line:07db4f7 
 Merchant: I have a delivery for the other two head villagers. #line:0d01c8f 
-Merchant: Can you please bring them each the correct item? #line:0d4d0e9 
+Merchant: Can you please bring them each the correct item from the black table? #line:0d4d0e9 
     -> Not a problem. #line:0bebb0b 
         <<set $accepted_delivery=1>>
         Merchant: Thank you so much, good luck! #line:0206bb7 

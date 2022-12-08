@@ -11,6 +11,8 @@ TagManager:
   - Bread
   - CrowdNPC
   - goal
+  - Flower
+  - Butter
   layers:
   - Default
   - TransparentFX
