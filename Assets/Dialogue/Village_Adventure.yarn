@@ -1,73 +1,4 @@
-﻿title: Start
-tags:
----
-Player: Another day in Space Fleet. Might go have a chat... #line:08b260d 
-//pick a random person to speak to
--> Go see the Engineer as per orders #line:0fcaf5d 
-    <<jump TalkToEngineer>>
--> Meet up with your friend #line:072c935 
-    <<jump TalkToCrewmate>>
--> Go and talk to the Captain #line:084570b 
-    <<jump TalkToCaptain>>
-===
-
-title: TalkToEngineer
-tags:
----
-Engineer: Hello! I am the Engineer. #line:064dd09 
-<<jump BridgeEnding>>
-===
-
-title: TalkToCrewmate
-tags:
----
-Crewmate: Hello! I am your Crewmate. #line:0870ea4 
-<<jump BridgeEnding>>
-===
-
-title: TalkToCaptain
-tags:
----
-<<declare $away_mission_readiness=0>>
-
-
-Captain: Hello! I am the Captain. #line:0861e59 
-Player: I want to go on more missions. #line:008670d 
-Captain: Do you think you are ready? #line:05198bc 
--> Yes #line:014e949 
-    <<set $away_mission_readiness+=1>>
-    //if so, ask again
-    Captain: Really? #line:026c113 
-    -> ...yes? #line:087956f 
-        <<set $away_mission_readiness+=1>>
-    -> Actually, no. #line:00617df 
--> No #line:0c3962d 
-//now go to the ending
-<<jump BridgeEnding>>
-===
-
-title: BridgeEnding
-tags:
----
-//everyone reports to the bridge
-Captain: Pirates! #line:0a59293 
-Player: Oh no! #line:0486e25 
-//now change who goes depending on player actions
-<<if $away_mission_readiness<2>>
-    Captain: Crewmate, go deal with those pirates! #line:0c2860e 
-    Crewmate: Yes, Captain! #line:0ed6828 
-<<else>>
-    Captain: Player, you were just telling me how ready for this you are. Go deal with those pirates! #line:07c3c84 
-    Player: Hooray! #line:08fb9fb 
-<<endif>>
-===
-
-
-
-
-
-
-title: RealStart
+﻿title: RealStart
 tags:
 ---
 Player: At last... #line:07747c1 
@@ -157,12 +88,18 @@ tags:
 <<declare $rejected_escort=0>>
 <<declare $accepted_escort=0>>
 <<declare $escort_quest_complete_tracker=0>>
+<<declare $dummyBoolVisitedFlowers = false>>
+<<declare $failedTask = false>>
 
 <<if $visited_town_crier==0>>
     <<jump NotVisitedCrierYet>>
 <<endif>>
 
-<<if $rejected_escort==1&&$accepted_escort==0>>
+<<if $dummyBoolVisitedFlowers == true>>
+Villager: Thank you so much for your help!
+<<endif>>
+
+<<if $rejected_escort==1&&$accepted_escort==0&&$dummyBoolVisitedFlowers==false>>
 Villager: Did you have a change of heart? It'll only take a minute to look at the flowers. #line:0c0602d 
     -> Yes I found some free time. #line:00dd1e4 
         <<set $accepted_escort=1>>
@@ -171,19 +108,41 @@ Villager: Did you have a change of heart? It'll only take a minute to look at th
         Villager: I guess I'll never be able to see the flowers again... #line:0bd0e37 
 <<endif>>
 
-<<if $rejected_escort==0&&$accepted_escort==0>>
+<<if $rejected_escort==0&&$accepted_escort==0&&$dummyBoolVisitedFlowers==false>>
 Villager: Hi there! #line:0a5bc5b 
 Villager: I love flowers, but I'm too scared to go look at them alone. #line:048f598 
 Villager: Would you kindly come with me to look at them? #line:099e60b 
-Villager: I'll be very scared and run home if you go too far away from me! #line:09d11d6 
+Villager: I'll be very scared and run home if we take too long! #line:09d11d6 
     -> Sure, I have some free time. #line:085b507 
         <<set $accepted_escort=1>>
-        Villager: Yay, let's go have a look! #line:05f3481 
     -> No I'm in a bit of a rush and can't stop to smell the roses. #line:041953e 
         <<set $rejected_escort=1>>
         Villager: You won't even take a minute out of your day to help someone... #line:031b002 
 <<endif>>
+
+<<if $failedTask == true && $dummyBoolVisitedFlowers == false>>
+    <<jump FailedEscort>>
+<<endif>>
 ===
+
+title: FailedEscort
+tags:
+---
+Villager: Ready to try again?
+    -> Yes, let's go!
+        <<set $accepted_escort=1>>
+    -> No way, it's too difficult!
+        Villager: I guess I'll never be able to see the flowers again... 
+===
+
+
+
+
+
+
+
+
+
 
 title: NPC4Delivery
 tags:
