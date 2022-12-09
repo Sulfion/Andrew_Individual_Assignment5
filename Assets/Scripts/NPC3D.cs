@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Yarn;
 using Yarn.Unity;
 public class NPC3D : MonoBehaviour
 {
-    public string characterName = "";
-    public string talkToNode = "";
-    private float timer;
     public YarnProject scriptToLoad;
     public DialogueRunner dialogueRunner; //refeernce to the dialogue control
     public GameObject dialogueCanvas; //reference to the canvas
+    public YarnCommandHolder yarnCommandVariables;
+
+    public string characterName = "";
+    public string talkToNode = "";
+    private float timer;
     public Vector3 PostionSpeachBubble = new Vector3(0f, 2.0f, 0.0f);
-
     public bool triggerTimer = false;
-    /// </summary>
-    // Start is called before the first frame update
 
+
+    // Start is called before the first frame update
     void Start()
     {
         dialogueCanvas = GameObject.Find("Dialogue Canvas"); //this is bad way to do this but hey we doing this quickly
@@ -45,19 +48,6 @@ public class NPC3D : MonoBehaviour
         if (scriptToLoad != null && dialogueRunner != null && dialogueRunner != null)
         {
             dialogueRunner.yarnProject = scriptToLoad; //adds the script to the dialogue system
-        }
-    }
-
-    //this is a timer to track how long the player is near a specific NPC
-    private void Update()
-    {
-        if (triggerTimer == true && this.gameObject.CompareTag("NPC1"))
-        {
-            timer += Time.deltaTime;
-            if (timer >= 5)
-            {
-                Debug.Log("Why are you still here?");
-            }
         }
     }
 
@@ -118,6 +108,19 @@ public class NPC3D : MonoBehaviour
         {
             dialogueCanvas.SetActive(false);
             triggerTimer = false;
+        }
+    }
+
+    //this is a timer to track how long the player is near NPC3 for the quest
+    private void Update()
+    {
+        if (triggerTimer == true && this.gameObject.CompareTag("NPC3"))
+        {
+            timer += Time.deltaTime;
+            if (timer >= 5)
+            {
+                Debug.Log("Why are you still here?");
+            }
         }
     }
 }

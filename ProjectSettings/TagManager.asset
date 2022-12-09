@@ -13,6 +13,8 @@ TagManager:
   - goal
   - Flower
   - Butter
+  - Flowerbed
+  - NPC3Home
   layers:
   - Default
   - TransparentFX

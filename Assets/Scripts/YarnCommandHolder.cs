@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Yarn;
 using Yarn.Unity;
 using static UnityEngine.Rendering.DebugUI;
@@ -9,7 +10,8 @@ public class YarnCommandHolder : MonoBehaviour
 {
     public InMemoryVariableStorage variableStorage;
 
-    float testVariable;
+    public float acceptedBaker;
+    public float acceptedDelivery;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class YarnCommandHolder : MonoBehaviour
     void Update()
     {
         VariableTracker();
+        //EscortQuestAcceptTracker();
     }
 
     //this method tracks what variables have changed.
@@ -28,6 +31,7 @@ public class YarnCommandHolder : MonoBehaviour
     private void VariableTracker()
     {
         variableStorage = GameObject.FindObjectOfType<InMemoryVariableStorage>();
-        variableStorage.TryGetValue("$visited_town_crier", out testVariable);
+        variableStorage.TryGetValue("$accepted_baker", out acceptedBaker);
+        variableStorage.TryGetValue("$accepted_delivery", out acceptedDelivery);
     }
 }
