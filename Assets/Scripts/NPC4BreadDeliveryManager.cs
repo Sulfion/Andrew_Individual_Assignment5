@@ -11,27 +11,29 @@ public class NPC4BreadDeliveryManager : MonoBehaviour
     public bool correctItemBreadDelivered = false;
     public bool wrongItemFlower = false;
 
+    //check if the correct or incorrect item is brought, set bools to true
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Bread"))
         {
-            variableStorage.SetValue("$failedNPC4Task", correctItemBreadDelivered = true);
+            variableStorage.SetValue("$deliveredTheBread", correctItemBreadDelivered = true);
         }
         if (other.gameObject.CompareTag("Flower"))
         {
-            variableStorage.SetValue("$failedNPC4Task", wrongItemFlower = true);
+            variableStorage.SetValue("$deliveredNotBread", wrongItemFlower = true);
         }
     }
 
+    //check if correct or incorrect item has left, set bools to false
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Bread"))
         {
-            variableStorage.SetValue("$failedNPC4Task", correctItemBreadDelivered = false);
+            variableStorage.SetValue("$deliveredTheBread", correctItemBreadDelivered = false);
         }
         if (other.gameObject.CompareTag("Flower"))
         {
-            variableStorage.SetValue("$failedNPC4Task", wrongItemFlower = false);
+            variableStorage.SetValue("$deliveredNotBread", wrongItemFlower = false);
         }
     }
 }

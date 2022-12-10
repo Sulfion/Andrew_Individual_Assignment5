@@ -8,7 +8,6 @@ public class NPC2FindQuest : MonoBehaviour
 {
     public InMemoryVariableStorage variableStorage;
     public GameObject butterPrefab;
-    private NPC4DeliverQuest deliveryQuestVariables;
     private NPC3FollowQuest followQuestVariables;
 
     public bool broughtButter = false;
@@ -19,6 +18,7 @@ public class NPC2FindQuest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BakerQuestAcceptTracker();
         VariableTracker();
     }
 
@@ -38,10 +38,6 @@ public class NPC2FindQuest : MonoBehaviour
     {
         variableStorage.SetValue("$broughtButter", broughtButter);
         variableStorage.SetValue("$failedDeliveryTask", failedTask);
-        //variableStorage.SetValue("$failedNPC4Task", deliveryQuestVariables.failedDeliveryTask);
-        //variableStorage.SetValue("$succeedNPC4Task", deliveryQuestVariables.succeedDeliveryTask);
-        //variableStorage.SetValue("$dummyBoolVisitedFlowers", followQuestVariables.boolForYarn);
-        //variableStorage.SetValue("$failedTask", followQuestVariables.failedTask);
     }
 
     //this method tracks what variables have changed.

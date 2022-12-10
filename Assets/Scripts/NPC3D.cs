@@ -13,7 +13,6 @@ public class NPC3D : MonoBehaviour
 
     public string characterName = "";
     public string talkToNode = "";
-    private float timer;
     public Vector3 PostionSpeachBubble = new Vector3(0f, 2.0f, 0.0f);
     public bool triggerTimer = false;
 
@@ -75,30 +74,6 @@ public class NPC3D : MonoBehaviour
                 dialogueRunner.StartDialogue(talkToNode);
             }
         }
-        ////control conditions for NPC1
-        //if (this.gameObject.CompareTag("NPC1"))
-        //{
-        //    //Debug.Log("Hello I am NPC1.");
-        //}
-        ////control conditions for NPC2
-        //if (this.gameObject.CompareTag("NPC2"))
-        //{
-        //    Debug.Log("Hello I am NPC2.");
-        //    if (other.gameObject.CompareTag("Bread"))
-        //    {
-        //        //Debug.Log("Thanks for the bread!");
-        //    }
-        //}
-        ////control conditions for NPC3
-        //if (this.gameObject.CompareTag("NPC3"))
-        //{
-        //    //Debug.Log("Thank you!");
-        //}
-        ////control conditions for NPC4
-        //if (this.gameObject.CompareTag("NPC4"))
-        //{
-        //    //Debug.Log("Hello I am NPC4");
-        //}
     }
 
     //hide dialogue canvas when player moves away
@@ -111,7 +86,7 @@ public class NPC3D : MonoBehaviour
         }
     }
 
-    ////this is a timer to track how long the player is near NPC3 for the quest
+    ////this is a timer to track how long the player is near something that might be used in the future
     //private void Update()
     //{
     //    if (triggerTimer == true && this.gameObject.CompareTag("NPC3"))

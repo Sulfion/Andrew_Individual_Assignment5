@@ -168,8 +168,12 @@ tags:
 <<declare $rejected_delivery=0>>
 <<declare $accepted_delivery=0>>
 <<declare $delivery_quest_complete_tracker=0>>
-<<declare $failedNPC4Task = false>>
-<<declare $succeedNPC4Task = false>>
+// <<declare $failedNPC4Task = false>>
+// <<declare $succeedNPC4Task = false>>
+<<declare $deliveredTheFlower = false>>
+<<declare $deliveredNotFlower = false>>
+<<declare $deliveredTheBread = false>>
+<<declare $deliveredNotBread = false>>
 
 <<if $visited_town_crier==0>>
     <<jump NotVisitedCrierYet>>
@@ -186,7 +190,7 @@ Merchant: Unless you're happy to just loaf about here longer. #line:0c79a08
         Merchant: Then loaf you shall. #line:0d80806 
 <<endif>>
 
-<<if $rejected_delivery==0 && $accepted_delivery==0 && $succeedNPC4Task == false>>
+<<if $rejected_delivery==0 && $accepted_delivery==0>>
 Merchant: You're just in time! #line:07db4f7 
 Merchant: I have a delivery for the other two head villagers. #line:0d01c8f 
 Merchant: Can you please bring them each the correct item from the black table? #line:0d4d0e9 
@@ -198,11 +202,11 @@ Merchant: Can you please bring them each the correct item from the black table? 
         Merchant: If you're going to give me attitude then I don't need nor want your help anyways. #line:069c45e 
 <<endif>>
 
-<<if $failedNPC4Task == true>>
+<<if $deliveredNotFlower||$deliveredNotBread==true>>
 Merchant: You delivered the wrong items! You need to go back and fix your mistake.
 <<endif>>
 
-<<if $succeedNPC4Task == true>>
+<<if $deliveredTheFlower&&$deliveredTheBread==true>>
 Merchant: Great job, you delivered the items to the correct people.
 <<set $delivery_quest_complete_tracker=1>>
 <<endif>>

@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12623d2c358fa343aa0f269e1eafc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variableStorage: {fileID: 0}
+  variableStorage: {fileID: 3831113770150802830}
   correctItemBreadDelivered: 0
   wrongItemFlower: 0
 --- !u!1 &448137013
@@ -2027,6 +2027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4309f9a50dbd9b646bc14b0c25bfdfe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  variableStorage: {fileID: 3831113770150802830}
   correctItemFlowerDelivered: 0
   wrongItemBread: 0
 --- !u!1 &751020485
