@@ -10,7 +10,6 @@ public class YarnCommandHolder : MonoBehaviour
 {
     public InMemoryVariableStorage variableStorage;
 
-    public float acceptedBaker;
     public float acceptedDelivery;
 
     // Start is called before the first frame update
@@ -23,7 +22,6 @@ public class YarnCommandHolder : MonoBehaviour
     void Update()
     {
         VariableTracker();
-        //EscortQuestAcceptTracker();
     }
 
     //this method tracks what variables have changed.
@@ -31,7 +29,6 @@ public class YarnCommandHolder : MonoBehaviour
     private void VariableTracker()
     {
         variableStorage = GameObject.FindObjectOfType<InMemoryVariableStorage>();
-        variableStorage.TryGetValue("$accepted_baker", out acceptedBaker);
         variableStorage.TryGetValue("$accepted_delivery", out acceptedDelivery);
     }
 }

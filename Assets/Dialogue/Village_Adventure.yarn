@@ -50,10 +50,15 @@ tags:
 ---
 <<declare $rejected_baker=0>>
 <<declare $accepted_baker=0>>
-<<declare $baker_quest_complete_tracker=0>>
+<<declare $broughtButter = false>>
+<<declare $failedDeliveryTask = false>>
 
 <<if $visited_town_crier==0>>
     <<jump NotVisitedCrierYet>>
+<<endif>>
+
+<<if $accepted_baker==1&& $broughtButter == true>>
+Baker: Wow! Great job! I can enjoy my bread now.
 <<endif>>
 
 <<if $rejected_baker==1&&$accepted_baker==0>>
@@ -67,11 +72,11 @@ Baker: Are you ready to get the butter? #line:0f4615d
         Baker: Good luck moving on to the next town without my help then. #line:0c099c5 
 <<endif>>
 
-<<if $rejected_baker==0>>
+<<if $rejected_baker==0 && $accepted_baker == 0 && $failedDeliveryTask == false>>
 Baker: At last! A new face in town. #line:055b31e 
 Baker: You've come just in time, I need some butter for the hot bread that has just come out of the oven. #line:0909ddb 
 Baker: Would you kindly go and fetch it? It's on a purple table. #line:00a7e8a 
-Baker: If you don't make it back in five minutes, my bread will be cold and I will be very sad. #line:0a74f73 
+Baker: If you bring me the wrong item, I will be very sad. #line:0a74f73 
 Baker: How about it? #line:09e4500 
     -> Yes, I'll run and fetch it. #line:0b997ec 
         <<set $accepted_baker=1>>
@@ -80,6 +85,15 @@ Baker: How about it? #line:09e4500
         <<set $rejected_baker=1>>
         Baker: Well that's just rude. #line:0735798 
 <<endif>>
+
+<<if $accepted_baker == 1 && $broughtButter == false && $failedDeliveryTask == false>>
+Baker: I'm still waiting for my butter! You better hurry.
+<<endif>>
+
+<<if $accepted_baker == 1 && $broughtButter == false && $failedDeliveryTask == true>>
+    <<set $accepted_baker = 0>>
+    <<jump FailedButter>>
+<<endif>>
 ===
 
 title: NPC3Escort
@@ -87,7 +101,6 @@ tags:
 ---
 <<declare $rejected_escort=0>>
 <<declare $accepted_escort=0>>
-<<declare $escort_quest_complete_tracker=0>>
 <<declare $dummyBoolVisitedFlowers = false>>
 <<declare $failedTask = false>>
 
@@ -123,6 +136,16 @@ Villager: I'll be very scared and run home if we take too long! #line:09d11d6
 <<if $failedTask == true && $dummyBoolVisitedFlowers == false>>
     <<jump FailedEscort>>
 <<endif>>
+===
+
+title: FailedButter
+tags:
+---
+Baker: Ready to try again?
+    -> Lets get that butter!
+        <<set $accepted_baker=1>>
+    -> My legs hurt, I think I'll take a rest.
+        Baker: My bread can't wait all day!
 ===
 
 title: FailedEscort

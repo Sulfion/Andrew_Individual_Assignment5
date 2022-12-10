@@ -62,7 +62,7 @@ public class NPC3FollowQuest : MonoBehaviour
     {
         if (acceptedEscort == 1)
         {
-            Debug.Log("Thanks!");
+            //Debug.Log("Thanks!");
             GetComponent<NavMeshAgent>().speed = (1.0f);
             followThePlayer();
         }
@@ -73,7 +73,7 @@ public class NPC3FollowQuest : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Flowerbed"))
         {
-            Debug.Log("FLOWERS!!");
+            //Debug.Log("FLOWERS!!");
             boolForYarn = true;
             SetValueFromCSharp();
         }

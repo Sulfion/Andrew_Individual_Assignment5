@@ -111,16 +111,16 @@ public class NPC3D : MonoBehaviour
         }
     }
 
-    //this is a timer to track how long the player is near NPC3 for the quest
-    private void Update()
-    {
-        if (triggerTimer == true && this.gameObject.CompareTag("NPC3"))
-        {
-            timer += Time.deltaTime;
-            if (timer >= 5)
-            {
-                Debug.Log("Why are you still here?");
-            }
-        }
-    }
+    ////this is a timer to track how long the player is near NPC3 for the quest
+    //private void Update()
+    //{
+    //    if (triggerTimer == true && this.gameObject.CompareTag("NPC3"))
+    //    {
+    //        timer += Time.deltaTime;
+    //        if (timer >= 5)
+    //        {
+    //            //Debug.Log("Why are you still here?");
+    //        }
+    //    }
+    //}
 }
