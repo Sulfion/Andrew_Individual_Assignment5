@@ -53,7 +53,6 @@ public class NPC3FollowQuest : MonoBehaviour
         {
             agent.destination = npc3Home.transform.position;
             failedTask = true;
-            SetValueFromCSharp();
         }
     }
 
@@ -75,15 +74,6 @@ public class NPC3FollowQuest : MonoBehaviour
         {
             //Debug.Log("FLOWERS!!");
             boolForYarn = true;
-            SetValueFromCSharp();
         }
-    }
-
-    //all variables to be called in YarnScript
-    [YarnCommand("set_value_from_cSharp")]
-    public void SetValueFromCSharp()
-    {
-        variableStorage.SetValue("$dummyBoolVisitedFlowers", boolForYarn);
-        variableStorage.SetValue("$failedTask", failedTask);
     }
 }

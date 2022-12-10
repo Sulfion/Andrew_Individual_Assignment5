@@ -8,6 +8,7 @@ public class NPC4DeliverQuest : MonoBehaviour
     public InMemoryVariableStorage variableStorage;
     public NPC4BreadDeliveryManager breadDeliveryManager;
     public NPC4FlowerDeliveryManager flowerDeliveryManager;
+    private NPC2FindQuest setValueMethodCaller;
 
     public float acceptedDelivery;
     public bool deliveredBread = false;
@@ -41,14 +42,6 @@ public class NPC4DeliverQuest : MonoBehaviour
         variableStorage.TryGetValue("$accepted_delivery", out acceptedDelivery);
     }
 
-    //all variables to be called in YarnScript
-    [YarnCommand("set_value_from_cSharp")]
-    public void SetValueFromCSharp()
-    {
-        variableStorage.SetValue("$failedNPC4Task", failedDeliveryTask);
-        variableStorage.SetValue("$failedNPC4Task", succeedDeliveryTask);
-    }
-
     //check if the correct item is brought and set bools
     private void OnTriggerEnter(Collider other)
     {
@@ -68,7 +61,6 @@ public class NPC4DeliverQuest : MonoBehaviour
         if (deliveredBread == true && deliveredFlower == true)
         {
             succeedDeliveryTask = true;
-            SetValueFromCSharp();
         }
     }
 
@@ -78,7 +70,6 @@ public class NPC4DeliverQuest : MonoBehaviour
         if (flowerDeliveryManager.wrongItemBread == true || breadDeliveryManager.wrongItemFlower == true)
         {
             failedDeliveryTask = true;
-            SetValueFromCSharp();
         }
     }
 }

@@ -8,17 +8,13 @@ public class NPC2FindQuest : MonoBehaviour
 {
     public InMemoryVariableStorage variableStorage;
     public GameObject butterPrefab;
+    private NPC4DeliverQuest deliveryQuestVariables;
+    private NPC3FollowQuest followQuestVariables;
 
     public bool broughtButter = false;
     public bool failedTask = false;
     private bool spawnedBread = false;
     public float acceptedBaker;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -30,11 +26,6 @@ public class NPC2FindQuest : MonoBehaviour
     //check if the correct item is brought and set bools
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bread"))
-        {
-            failedTask = true;
-            SetValueFromCSharp();
-        }
         if (other.gameObject.CompareTag("Butter"))
         {
             broughtButter = true;
@@ -42,12 +33,16 @@ public class NPC2FindQuest : MonoBehaviour
         }
     }
 
-    //all variables to be called in YarnScript
+    //all variables to be called in YarnScript, it's getting tracked here because... reasons
     [YarnCommand("set_value_from_cSharp")]
     public void SetValueFromCSharp()
     {
         variableStorage.SetValue("$broughtButter", broughtButter);
         variableStorage.SetValue("$failedDeliveryTask", failedTask);
+        variableStorage.SetValue("$failedNPC4Task", deliveryQuestVariables.failedDeliveryTask);
+        variableStorage.SetValue("$succeedNPC4Task", deliveryQuestVariables.succeedDeliveryTask);
+        variableStorage.SetValue("$dummyBoolVisitedFlowers", followQuestVariables.boolForYarn);
+        variableStorage.SetValue("$failedTask", followQuestVariables.failedTask);
     }
 
     //this method tracks what variables have changed.

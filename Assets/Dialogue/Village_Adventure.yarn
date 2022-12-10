@@ -50,6 +50,7 @@ tags:
 ---
 <<declare $rejected_baker=0>>
 <<declare $accepted_baker=0>>
+<<declare $fetch_quest_complete_tracker=0>>
 <<declare $broughtButter = false>>
 <<declare $failedDeliveryTask = false>>
 
@@ -59,6 +60,7 @@ tags:
 
 <<if $accepted_baker==1&& $broughtButter == true>>
 Baker: Wow! Great job! I can enjoy my bread now.
+<<set $fetch_quest_complete_tracker=1>>
 <<endif>>
 
 <<if $rejected_baker==1&&$accepted_baker==0>>
@@ -102,6 +104,7 @@ tags:
 <<declare $rejected_escort=0>>
 <<declare $accepted_escort=0>>
 <<declare $dummyBoolVisitedFlowers = false>>
+<<declare $escort_quest_complete_tracker=0>>
 <<declare $failedTask = false>>
 
 <<if $visited_town_crier==0>>
@@ -110,6 +113,7 @@ tags:
 
 <<if $dummyBoolVisitedFlowers == true>>
 Villager: Thank you so much for your help!
+<<set $escort_quest_complete_tracker=1>>
 <<endif>>
 
 <<if $rejected_escort==1&&$accepted_escort==0&&$dummyBoolVisitedFlowers==false>>
@@ -158,21 +162,14 @@ Villager: Ready to try again?
         Villager: I guess I'll never be able to see the flowers again... 
 ===
 
-
-
-
-
-
-
-
-
-
 title: NPC4Delivery
 tags:
 ---
 <<declare $rejected_delivery=0>>
 <<declare $accepted_delivery=0>>
 <<declare $delivery_quest_complete_tracker=0>>
+<<declare $failedNPC4Task = false>>
+<<declare $succeedNPC4Task = false>>
 
 <<if $visited_town_crier==0>>
     <<jump NotVisitedCrierYet>>
@@ -199,6 +196,15 @@ Merchant: Can you please bring them each the correct item from the black table? 
     -> Do I look like a deliveryman? #line:091374a 
         <<set $rejected_delivery=1>>
         Merchant: If you're going to give me attitude then I don't need nor want your help anyways. #line:069c45e 
+<<endif>>
+
+<<if $failedNPC4Task == true && $succeedNPC4Task == false>>
+Merchant: You delivered the wrong items! You need to go back and fix your mistake.
+<<endif>>
+
+<<if $succeedNPC4Task == true && $failedNPC4Task == false>>
+Merchant: Great job, you delivered the items to the correct people.
+<<set $delivery_quest_complete_tracker=1>>
 <<endif>>
 ===
 

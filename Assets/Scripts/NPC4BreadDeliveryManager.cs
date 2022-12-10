@@ -8,12 +8,6 @@ public class NPC4BreadDeliveryManager : MonoBehaviour
     public bool correctItemBreadDelivered = false;
     public bool wrongItemFlower = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
