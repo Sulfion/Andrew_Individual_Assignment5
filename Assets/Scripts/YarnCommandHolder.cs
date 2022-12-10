@@ -21,14 +21,6 @@ public class YarnCommandHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        VariableTracker();
-    }
 
-    //this method tracks what variables have changed.
-    //For example, if a player accepts a quest, delivers an item to the correct item, the current state will be stored here
-    private void VariableTracker()
-    {
-        variableStorage = GameObject.FindObjectOfType<InMemoryVariableStorage>();
-        variableStorage.TryGetValue("$accepted_delivery", out acceptedDelivery);
     }
 }

@@ -1004,6 +1004,19 @@ MonoBehaviour:
   failedTask: 0
   spawnedBread: 0
   acceptedBaker: 0
+--- !u!114 &429304799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429304791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12623d2c358fa343aa0f269e1eafc00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctItemBreadDelivered: 0
 --- !u!1 &448137013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1957,19 @@ MonoBehaviour:
   acceptedEscort: 0
   boolForYarn: 0
   failedTask: 0
+--- !u!114 &729893602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729893592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4309f9a50dbd9b646bc14b0c25bfdfe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  correctItemFlowerDelivered: 0
 --- !u!1 &751020485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,11 +6182,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986579668}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1991304767 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6929674337225860146, guid: 5394b0bf63baba0408afab8090aec2c4, type: 3}
+  m_PrefabInstance: {fileID: 6929674337398817293}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1991304772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6929674337225860169, guid: 5394b0bf63baba0408afab8090aec2c4, type: 3}
   m_PrefabInstance: {fileID: 6929674337398817293}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1991304774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991304767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a558f6f13edfc445bba1ccf82fd49a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variableStorage: {fileID: 3831113770150802830}
+  breadDeliveryManager: {fileID: 429304799}
+  flowerDeliveryManager: {fileID: 729893602}
+  acceptedDelivery: 0
+  deliveredBread: 0
+  deliveredFlower: 0
+  failedDeliveryTask: 0
+  succeedDeliveryTask: 0
+  bread: {fileID: 2348645776870849533, guid: 9d16bfbcf593b2d48b70a5fc91a64aab, type: 3}
+  flower: {fileID: 2572380033966959630, guid: 149530acdcfe1d547803630de48f339a, type: 3}
 --- !u!114 &2067428205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6323935187928403899, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}

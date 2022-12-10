@@ -11,7 +11,7 @@ public class NPC2FindQuest : MonoBehaviour
 
     public bool broughtButter = false;
     public bool failedTask = false;
-    public bool spawnedBread = false;
+    private bool spawnedBread = false;
     public float acceptedBaker;
 
     // Start is called before the first frame update
