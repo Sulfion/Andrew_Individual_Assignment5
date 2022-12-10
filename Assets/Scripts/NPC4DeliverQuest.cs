@@ -8,7 +8,6 @@ public class NPC4DeliverQuest : MonoBehaviour
     public InMemoryVariableStorage variableStorage;
     public NPC4BreadDeliveryManager breadDeliveryManager;
     public NPC4FlowerDeliveryManager flowerDeliveryManager;
-    private NPC2FindQuest setValueMethodCaller;
 
     public float acceptedDelivery;
     public bool deliveredBread = false;
@@ -45,6 +44,10 @@ public class NPC4DeliverQuest : MonoBehaviour
     //check if the correct item is brought and set bools
     private void OnTriggerEnter(Collider other)
     {
+        CheckIfBothItemsDelivered();
+        CheckIfWrongDelivery();
+        CheckIfWrongDelivery2();
+
         if (breadDeliveryManager.correctItemBreadDelivered == true)
         {
             deliveredBread = true;
@@ -60,16 +63,23 @@ public class NPC4DeliverQuest : MonoBehaviour
     {
         if (deliveredBread == true && deliveredFlower == true)
         {
-            succeedDeliveryTask = true;
+            variableStorage.SetValue("$succeedNPC4Task", succeedDeliveryTask = true);
         }
     }
 
     //check to see if at least one item was delivered to the wrong NPC
     public void CheckIfWrongDelivery()
     {
-        if (flowerDeliveryManager.wrongItemBread == true || breadDeliveryManager.wrongItemFlower == true)
+        if (flowerDeliveryManager.wrongItemBread == true)
         {
-            failedDeliveryTask = true;
+            variableStorage.SetValue("$failedNPC4Task", failedDeliveryTask == true);
+        }
+    }
+    public void CheckIfWrongDelivery2()
+    {
+        if (breadDeliveryManager.wrongItemFlower == true)
+        {
+            variableStorage.SetValue("$failedNPC4Task", failedDeliveryTask == true);
         }
     }
 }

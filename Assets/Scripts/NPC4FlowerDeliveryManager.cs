@@ -8,6 +8,7 @@ public class NPC4FlowerDeliveryManager : MonoBehaviour
     public bool correctItemFlowerDelivered = false;
     public bool wrongItemBread = false;
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Flower"))

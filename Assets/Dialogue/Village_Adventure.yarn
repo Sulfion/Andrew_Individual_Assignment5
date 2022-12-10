@@ -186,23 +186,23 @@ Merchant: Unless you're happy to just loaf about here longer. #line:0c79a08
         Merchant: Then loaf you shall. #line:0d80806 
 <<endif>>
 
-<<if $rejected_delivery==0&&$accepted_delivery==0>>
+<<if $rejected_delivery==0 && $accepted_delivery==0 && $succeedNPC4Task == false>>
 Merchant: You're just in time! #line:07db4f7 
 Merchant: I have a delivery for the other two head villagers. #line:0d01c8f 
 Merchant: Can you please bring them each the correct item from the black table? #line:0d4d0e9 
     -> Not a problem. #line:0bebb0b 
-        <<set $accepted_delivery=1>>
         Merchant: Thank you so much, good luck! #line:0206bb7 
+        <<set $accepted_delivery=1>>
     -> Do I look like a deliveryman? #line:091374a 
         <<set $rejected_delivery=1>>
         Merchant: If you're going to give me attitude then I don't need nor want your help anyways. #line:069c45e 
 <<endif>>
 
-<<if $failedNPC4Task == true && $succeedNPC4Task == false>>
+<<if $failedNPC4Task == true>>
 Merchant: You delivered the wrong items! You need to go back and fix your mistake.
 <<endif>>
 
-<<if $succeedNPC4Task == true && $failedNPC4Task == false>>
+<<if $succeedNPC4Task == true>>
 Merchant: Great job, you delivered the items to the correct people.
 <<set $delivery_quest_complete_tracker=1>>
 <<endif>>

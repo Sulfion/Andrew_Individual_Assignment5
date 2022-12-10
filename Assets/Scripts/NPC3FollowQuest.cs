@@ -52,7 +52,7 @@ public class NPC3FollowQuest : MonoBehaviour
         if (timer > 60.0f)
         {
             agent.destination = npc3Home.transform.position;
-            failedTask = true;
+            variableStorage.SetValue("$failedTask", failedTask = true);
         }
     }
 
@@ -73,7 +73,7 @@ public class NPC3FollowQuest : MonoBehaviour
         if (other.gameObject.CompareTag("Flowerbed"))
         {
             //Debug.Log("FLOWERS!!");
-            boolForYarn = true;
+            variableStorage.SetValue("$dummyBoolVisitedFlowers", boolForYarn = true);
         }
     }
 }

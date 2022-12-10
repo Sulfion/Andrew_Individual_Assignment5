@@ -1072,6 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b12623d2c358fa343aa0f269e1eafc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  variableStorage: {fileID: 0}
   correctItemBreadDelivered: 0
   wrongItemFlower: 0
 --- !u!1 &448137013
