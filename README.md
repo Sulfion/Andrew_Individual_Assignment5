@@ -19,7 +19,7 @@ VIDEO GOES HERE
 * Four interactable NPC characters  
 * Three major quests  
 * Optional dialogue trees for accepting/rejecting quests  
-* Fail-states for each quests (for example, bringing incorrect item)  
+* Fail-state for each quest (for example, bringing incorrect item)  
 * Grabbable quest objects  
 * Amusing dialogue between NPC and player  
 
