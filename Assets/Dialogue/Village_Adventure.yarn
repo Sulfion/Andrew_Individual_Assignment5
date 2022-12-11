@@ -12,10 +12,20 @@ tags:
 ---
 <<declare $visited_town_crier=0>>
 <<declare $rejected_town_crier=0>>
+<<declare $completed_all_quests = 0>>
+<<declare $endSequence = false>>
+
+<<if $fetch_quest_complete_tracker==1&&$escort_quest_complete_tracker==1&&$delivery_quest_complete_tracker==1>>
+<<set $completed_all_quests = 1>>
+<<jump TheEnd>>
+<<endif>>
 
 <<if $visited_town_crier==1>>
-Town Crier: As soon as you finish your tasks, you'll be able to leave. #line:0721654 
+Town Crier: As soon as you finish your tasks, come speak to me again to leave. #line:0721654 
 Town Crier: Good luck! #line:0078aec 
+The value of Fetch Quest is {$fetch_quest_complete_tracker}
+The value of Escort Quest is {$escort_quest_complete_tracker}
+The value of Delivery Quest is {$delivery_quest_complete_tracker}
 <<endif>>
 
 <<if $rejected_town_crier==1&&$visited_town_crier==0>>
@@ -59,8 +69,11 @@ tags:
 <<endif>>
 
 <<if $accepted_baker==1&& $broughtButter == true>>
-Baker: Wow! Great job! I can enjoy my bread now.
 <<set $fetch_quest_complete_tracker=1>>
+    <<if $fetch_quest_complete_tracker==1&&$escort_quest_complete_tracker==1&&$delivery_quest_complete_tracker==1>>
+    <<jump TheEnd>>
+    <<endif>>
+Baker: Wow! Great job! I can enjoy my bread now.
 <<endif>>
 
 <<if $rejected_baker==1&&$accepted_baker==0>>
@@ -69,7 +82,7 @@ Baker: Luckily for you, I just finished making another fresh loaf of bread. #lin
 Baker: Are you ready to get the butter? #line:0f4615d 
     -> Yes, fine. But only this once! #line:0376e5c 
         <<set $accepted_baker=1>>
-        Baker: I had a feeling you would see reason. Your five minutes starts now. #line:0ab491e 
+        Baker: I had a feeling you would see reason. I'll be waiting. #line:0ab491e 
     -> Not a chance. Make your own sandwich. #line:0223d11 
         Baker: Good luck moving on to the next town without my help then. #line:0c099c5 
 <<endif>>
@@ -82,7 +95,8 @@ Baker: For unrelated reasons, I just want to say I really hate flowers. #line:0a
 Baker: How about it? #line:09e4500 
     -> Yes, I'll run and fetch it. #line:0b997ec 
         <<set $accepted_baker=1>>
-        Thank you so much! #line:0a72ec2 
+        Baker: Thank you so much! #line:0a72ec2 
+        Baker: Come see me again once you're done.
     -> No way, why should I make you your lunch? #line:0ab821a 
         <<set $rejected_baker=1>>
         Baker: Well that's just rude. #line:0735798 
@@ -112,8 +126,11 @@ tags:
 <<endif>>
 
 <<if $dummyBoolVisitedFlowers == true>>
-Villager: Thank you so much for your help!
 <<set $escort_quest_complete_tracker=1>>
+    <<if $fetch_quest_complete_tracker==1&&$escort_quest_complete_tracker==1&&$delivery_quest_complete_tracker==1>>
+    <<jump TheEnd>>
+    <<endif>>
+Villager: Thank you so much for your help!
 <<endif>>
 
 <<if $rejected_escort==1&&$accepted_escort==0&&$dummyBoolVisitedFlowers==false>>
@@ -132,6 +149,7 @@ Villager: Would you kindly come with me to look at them? #line:099e60b
 Villager: I'll be very scared and run home if we take too long! #line:09d11d6 
     -> Sure, I have some free time. #line:085b507 
         <<set $accepted_escort=1>>
+        Villager: Thank you! Come see me again after we're done.
     -> No I'm in a bit of a rush and can't stop to smell the roses. #line:041953e 
         <<set $rejected_escort=1>>
         Villager: You won't even take a minute out of your day to help someone... #line:031b002 
@@ -165,8 +183,6 @@ tags:
 <<declare $rejected_delivery=0>>
 <<declare $accepted_delivery=0>>
 <<declare $delivery_quest_complete_tracker=0>>
-// <<declare $failedNPC4Task = false>>
-// <<declare $succeedNPC4Task = false>>
 <<declare $deliveredTheFlower = false>>
 <<declare $deliveredNotFlower = false>>
 <<declare $deliveredTheBread = false>>
@@ -191,9 +207,10 @@ Merchant: Unless you're happy to just loaf about here longer. #line:0c79a08
 Merchant: You're just in time! #line:07db4f7 
 Merchant: I have a delivery for the other two head villagers. #line:0d01c8f 
 Merchant: Can you please bring them each the correct item from the black table? #line:0d4d0e9 
+Marchant: You should know who likes what if you've spoken to them before.
     -> Not a problem. #line:0bebb0b 
-        Merchant: Thank you so much, good luck! #line:0206bb7 
         <<set $accepted_delivery=1>>
+        Merchant: Thank you so much, come speak to me again when you're done. Good luck! #line:0206bb7 
     -> Do I look like a deliveryman? #line:091374a 
         <<set $rejected_delivery=1>>
         Merchant: If you're going to give me attitude then I don't need nor want your help anyways. #line:069c45e 
@@ -204,9 +221,13 @@ Merchant: You delivered the wrong items! You need to go back and fix your mistak
 <<endif>>
 
 <<if $deliveredTheFlower&&$deliveredTheBread==true>>
-Merchant: Great job, you delivered the items to the correct people.
 <<set $delivery_quest_complete_tracker=1>>
+    <<if $fetch_quest_complete_tracker==1&&$escort_quest_complete_tracker==1&&$delivery_quest_complete_tracker==1>>
+    <<jump TheEnd>>
+    <<endif>>
+Merchant: Great job, you delivered the items to the correct people.
 <<endif>>
+
 ===
 
 title: NotVisitedCrierYet
@@ -215,3 +236,12 @@ tags:
 Player: I should visit the Town Crier before speaking to anyone else. #line:0f22561 
 ===
 
+title: TheEnd
+tags:
+---
+It's about time I spoke to the Town Crier again...
+<<if $endSequence == true>>
+Town Crier: Thank you so much for all of your help! You can leave now.
+Town Crier: Feel free to visit again any time!
+<<endif>>
+===

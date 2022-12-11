@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7525047696973399796}
   - component: {fileID: 7525047696973399797}
   - component: {fileID: 7525047696973399798}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Butter
   m_TagString: Butter
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6414131517819583540}
   - component: {fileID: 7826049975312101434}
   - component: {fileID: 4737149761951390915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sphere
   m_TagString: Flower
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1602321453350918149}
   - component: {fileID: -5186596495517577815}
   - component: {fileID: -7866649819695975532}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flower
   m_TagString: Flower
   m_Icon: {fileID: 0}

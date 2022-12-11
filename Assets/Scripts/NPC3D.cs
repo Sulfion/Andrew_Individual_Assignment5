@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Yarn;
 using Yarn.Unity;
 public class NPC3D : MonoBehaviour
 {
@@ -17,11 +16,12 @@ public class NPC3D : MonoBehaviour
     public bool triggerTimer = false;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
         dialogueCanvas = GameObject.Find("Dialogue Canvas"); //this is bad way to do this but hey we doing this quickly
-        dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
+        dialogueRunner = FindObjectOfType<DialogueRunner>();
         if (scriptToLoad == null)
         {
             Debug.LogError("NPC3D not set up with yarn scriptToLoad ", this);
@@ -85,17 +85,4 @@ public class NPC3D : MonoBehaviour
             triggerTimer = false;
         }
     }
-
-    ////this is a timer to track how long the player is near something that might be used in the future
-    //private void Update()
-    //{
-    //    if (triggerTimer == true && this.gameObject.CompareTag("NPC3"))
-    //    {
-    //        timer += Time.deltaTime;
-    //        if (timer >= 5)
-    //        {
-    //            //Debug.Log("Why are you still here?");
-    //        }
-    //    }
-    //}
 }
