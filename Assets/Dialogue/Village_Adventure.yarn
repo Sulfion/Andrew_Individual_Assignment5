@@ -78,11 +78,11 @@ Baker: Are you ready to get the butter? #line:0f4615d
 Baker: At last! A new face in town. #line:055b31e 
 Baker: You've come just in time, I need some butter for the hot bread that has just come out of the oven. #line:0909ddb 
 Baker: Would you kindly go and fetch it? It's on a purple table. #line:00a7e8a 
-Baker: If you bring me the wrong item, I will be very sad. #line:0a74f73 
+Baker: For unrelated reasons, I just want to say I really hate flowers. #line:0a74f73 
 Baker: How about it? #line:09e4500 
     -> Yes, I'll run and fetch it. #line:0b997ec 
         <<set $accepted_baker=1>>
-        Thank you so much! The five minutes starts now. #line:0a72ec2 
+        Thank you so much! #line:0a72ec2 
     -> No way, why should I make you your lunch? #line:0ab821a 
         <<set $rejected_baker=1>>
         Baker: Well that's just rude. #line:0735798 
@@ -93,7 +93,6 @@ Baker: I'm still waiting for my butter! You better hurry.
 <<endif>>
 
 <<if $accepted_baker == 1 && $broughtButter == false && $failedDeliveryTask == true>>
-    <<set $accepted_baker = 0>>
     <<jump FailedButter>>
 <<endif>>
 ===
@@ -106,6 +105,7 @@ tags:
 <<declare $dummyBoolVisitedFlowers = false>>
 <<declare $escort_quest_complete_tracker=0>>
 <<declare $failedTask = false>>
+<<declare $tryAgain = 0>>
 
 <<if $visited_town_crier==0>>
     <<jump NotVisitedCrierYet>>
@@ -145,19 +145,16 @@ Villager: I'll be very scared and run home if we take too long! #line:09d11d6
 title: FailedButter
 tags:
 ---
-Baker: Ready to try again?
-    -> Lets get that butter!
-        <<set $accepted_baker=1>>
-    -> My legs hurt, I think I'll take a rest.
-        Baker: My bread can't wait all day!
+Baker: I told you I hate flowers! Take it away and try again.
 ===
 
 title: FailedEscort
 tags:
 ---
-Villager: Ready to try again?
+Villager: Ready to try again? I won't leave this time.
     -> Yes, let's go!
         <<set $accepted_escort=1>>
+        <<set $tryAgain to 1>>
     -> No way, it's too difficult!
         Villager: I guess I'll never be able to see the flowers again... 
 ===

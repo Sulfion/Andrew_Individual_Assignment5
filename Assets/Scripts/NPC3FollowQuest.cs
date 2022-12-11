@@ -14,6 +14,7 @@ public class NPC3FollowQuest : MonoBehaviour
     NavMeshAgent agent;
 
     public float acceptedEscort;
+    public float tryAgain = 0;
     private float timer;
 
     public bool boolForYarn = false;
@@ -29,15 +30,17 @@ public class NPC3FollowQuest : MonoBehaviour
     void Update()
     {
         VariableTracker();
+        TryAgain();
         EscortQuestAcceptTracker();
     }
 
-    //this method tracks what variables have changed.
+    //this method tracks gets vaaribles from yarnspinner
     //For example, if a player accepts a quest, delivers an item to the correct item, the current state will be stored here
     private void VariableTracker()
     {
         variableStorage = GameObject.FindObjectOfType<InMemoryVariableStorage>();
         variableStorage.TryGetValue("$accepted_escort", out acceptedEscort);
+        variableStorage.TryGetValue("$tryAgain", out tryAgain);
     }
 
     //script for making the NPC follow player and return home condition
@@ -45,14 +48,16 @@ public class NPC3FollowQuest : MonoBehaviour
     {
         agent.destination = playerPosition.position;
         timer += Time.deltaTime;
-        if (boolForYarn)
+        if (boolForYarn == true)
         {
             agent.destination = npc3Home.transform.position;
         }
         if (timer > 60.0f)
         {
             agent.destination = npc3Home.transform.position;
+            variableStorage.SetValue("$acceptedEscort", acceptedEscort = 0);
             variableStorage.SetValue("$failedTask", failedTask = true);
+
         }
     }
 
@@ -63,6 +68,15 @@ public class NPC3FollowQuest : MonoBehaviour
         {
             //Debug.Log("Thanks!");
             GetComponent<NavMeshAgent>().speed = (1.0f);
+            followThePlayer();
+        }
+    }
+
+    private void TryAgain()
+    {
+        if(tryAgain == 1)
+        {
+            timer = 0.0f;
             followThePlayer();
         }
     }

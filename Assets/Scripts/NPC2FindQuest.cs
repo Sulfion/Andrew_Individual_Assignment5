@@ -8,7 +8,6 @@ public class NPC2FindQuest : MonoBehaviour
 {
     public InMemoryVariableStorage variableStorage;
     public GameObject butterPrefab;
-    private NPC3FollowQuest followQuestVariables;
 
     public bool broughtButter = false;
     public bool failedTask = false;
@@ -23,21 +22,31 @@ public class NPC2FindQuest : MonoBehaviour
     }
 
     //check if the correct item is brought and set bools
+    //if incorrect item is brought, do something in yarnspinner
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Butter"))
         {
-            broughtButter = true;
-            SetValueFromCSharp();
+            variableStorage.SetValue("$broughtButter", broughtButter = true);
+        }
+        if (other.gameObject.CompareTag("Flower"))
+        {
+            variableStorage.SetValue("$failedDeliveryTask", failedTask = true);
         }
     }
 
-    //all variables to be called in YarnScript, it's getting tracked here because... reasons
-    [YarnCommand("set_value_from_cSharp")]
-    public void SetValueFromCSharp()
+    //check if the correct item is taken away and set bools
+    //if incorrect item is taken away, allow quest completion to be possible again
+    private void OnTriggerExit(Collider other)
     {
-        variableStorage.SetValue("$broughtButter", broughtButter);
-        variableStorage.SetValue("$failedDeliveryTask", failedTask);
+        if (other.gameObject.CompareTag("Butter"))
+        {
+            variableStorage.SetValue("$broughtButter", broughtButter = false);
+        }
+        if (other.gameObject.CompareTag("Flower"))
+        {
+            variableStorage.SetValue("$failedDeliveryTask", failedTask = false);
+        }
     }
 
     //this method tracks what variables have changed.
