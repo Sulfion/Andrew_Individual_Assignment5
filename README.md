@@ -15,12 +15,12 @@ VIDEO GOES HERE
 
 
 #### Features:  
-* Realistic crowd AI simulation of 50 Beanlings with implemented Flocking algorithm.  
-* Four NPC characters.  
-* Three major quests.  
-* Optional dialogue trees for accepting/rejecting quests.  
-* Fail-states for each quests (for example, bringing incorrect item).  
-* Grabbable quest objects.  
-* Amusing dialogue between NPC and player.  
+* Realistic crowd AI simulation of 50 Beanlings, implemented with Flocking algorithm  
+* Four interactable NPC characters  
+* Three major quests  
+* Optional dialogue trees for accepting/rejecting quests  
+* Fail-states for each quests (for example, bringing incorrect item)  
+* Grabbable quest objects  
+* Amusing dialogue between NPC and player  
 
 
