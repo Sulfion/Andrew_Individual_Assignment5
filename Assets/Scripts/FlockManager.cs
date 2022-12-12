@@ -42,7 +42,7 @@ public class FlockManager : MonoBehaviour
 
     //loop through each NPC, find it's position and figure out how much they should avoid each other
     //check if there's other NPC's around, if there is apply this rule to calculate the center
-    //this calculation will determine the direction the NPC needs/wants to travel in and aim them towards it
+    //this calculation will then find the direction the NPC wants to travel in and rotate them them towards it
     private void ApplyRules()
     {
         GameObject[] gos;
